@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/movieImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:adjustViewBounds="true"
+        android:layout_alignParentLeft="true"
+        android:scaleType="fitCenter"/>
+    <TextView
+        android:id="@+id/moveTitle"
+        android:layout_toRightOf="@id/movieImage"
+        android:layout_alignParentTop="true"
+        android:paddingTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/criticRating"
+        android:layout_below="@id/moveTitle"
+        android:layout_toRightOf="@id/movieImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/criticScore"
+        android:layout_toRightOf="@id/criticRating"
+        android:layout_below="@id/moveTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/mpaaRating"
+        android:layout_toRightOf="@id/movieImage"
+        android:layout_below="@id/criticRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

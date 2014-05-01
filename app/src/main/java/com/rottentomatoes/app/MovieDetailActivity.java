@@ -1,27 +1,32 @@
 package com.rottentomatoes.app;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
-import com.rottentomatoes.app.api.manager.RottenManager;
-import com.rottentomatoes.app.fragment.MovieItemFragment;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
 
-public class MainActivity extends Activity {
 
-    private static String API_KEY = "69prjq4hdtxhkd2xbgx5mvnp";
+public class MovieDetailActivity extends Activity {
+
+    @InjectView(R.id.movieTitle)
+    TextView movieTitle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        RottenManager.create(API_KEY, getApplicationContext(), 5*1024*1024);
-        setContentView(R.layout.activity_main);
-        if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction()
-                    .add(R.id.container, new MovieItemFragment())
-                    .commit();
-        }
+        setContentView(R.layout.activity_movie_detail);
+        ButterKnife.inject(this);
+
+        Intent intent = getIntent();
+        setTitle(intent.getStringExtra("movie"));
+        movieTitle.setText(intent.getStringExtra("synopsis"));
 
     }
 
@@ -29,7 +34,7 @@ public class MainActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.movie_detail, menu);
         return true;
     }
 
@@ -44,4 +49,5 @@ public class MainActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
